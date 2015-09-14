@@ -1,0 +1,9 @@
+{
+    "type": "sftp",
+    "host": "ps467697.dreamhostps.com",
+    "username": "bdnuser",
+    "password": "4XphpP57",
+    "port": 22,
+    "remotePath": "/home/bdnuser/briannorrisdesign/public/sandbox/",
+    "uploadOnSave": false
+}
