@@ -9,6 +9,20 @@ $('.pause').click(function() {
 });
 
 
+var numberOfTracks = ($('.player').length);
+
+console.log(numberOfTracks);
+
+$('.player').on('ended', function() {
+  //var curID = $('.player').attr('id');
+  //alert(curID);
+  //curID++;
+  //var nextTrack = $('.player').next('.player');
+  //console.log(nextTrack);
+   $('.player').next().trigger('play');
+
+   // enable button/link
+});
 
 
 function stopAudio(){
