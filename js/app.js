@@ -3,20 +3,34 @@
 var numberOfTracks = ($('.player').length);
 console.log(numberOfTracks);
 
-// Adds first and last classes automatically
-$('.player').first().addClass('first');
-$('.player').last().addClass('last');
 
-// Makes the next track play after end, or start over on the first track if it's the last track.
-$('.player').on('ended', function() {
-  if ($(this).hasClass('last')) {
-    $('.first').trigger('play');
-  }
-  else {
-    $('.player').next().trigger('play');
-  }
+var tracks = ['GrandBlood.mp3', 'Segue5.mp3']
+console.debug(tracks);
+
+$.each(tracks, function(key, value) {
+  $('#playlist').append('<button id="'+value+'">'+value+'</button>');
+/*
+    $('#audio').append('<audio controls preload="auto" class="player" id="'+value+'"><source src="'+value+'" type="audio/mpeg;" codecs="mp3"></audio>');
+    */
 });
 
+$('#playlist button').click(function(){
+  $('#playlist button').removeClass('active');
+  var track = $(this).attr('id');
+  console.log(track);
+  $('.player').attr('src',track).trigger('play');
+  $('.player').addClass('active');
+  $(this).addClass('active');
+});
+
+// Adds first and last classes automatically
+$('#playlist button').first().addClass('first');
+$('#playlist button').last().addClass('last');
+
+
+$('.player').on('ended', function() {
+
+});
 
 /*
 $('.play').toggle(function() {
@@ -27,7 +41,7 @@ $('.play').toggle(function() {
 $('.pause').click(function() {
   $(".player").trigger('pause');
 });
-*/
+
 
 function stopAudio(){
   //pause playing
@@ -55,3 +69,4 @@ function volumeDown(){
 function toggleMuteAudio(){
     $(".player").prop("muted",!$(".player").prop("muted"));
 }
+*/
