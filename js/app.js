@@ -1,29 +1,33 @@
 // http://codesamplez.com/programming/control-html5-audio-with-jquery
 
-$('.play').click(function() {
+var numberOfTracks = ($('.player').length);
+console.log(numberOfTracks);
+
+// Adds first and last classes automatically
+$('.player').first().addClass('first');
+$('.player').last().addClass('last');
+
+// Makes the next track play after end, or start over on the first track if it's the last track.
+$('.player').on('ended', function() {
+  if ($(this).hasClass('last')) {
+    $('.first').trigger('play');
+  }
+  else {
+    $('.player').next().trigger('play');
+  }
+});
+
+
+/*
+$('.play').toggle(function() {
   $(".player").trigger('play');
 });
+
 
 $('.pause').click(function() {
   $(".player").trigger('pause');
 });
-
-
-var numberOfTracks = ($('.player').length);
-
-console.log(numberOfTracks);
-
-$('.player').on('ended', function() {
-  //var curID = $('.player').attr('id');
-  //alert(curID);
-  //curID++;
-  //var nextTrack = $('.player').next('.player');
-  //console.log(nextTrack);
-   $('.player').next().trigger('play');
-
-   // enable button/link
-});
-
+*/
 
 function stopAudio(){
   //pause playing
