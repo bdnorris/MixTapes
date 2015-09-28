@@ -11,7 +11,7 @@ $.each(tracks, function(key, value) {
   $('#playlist').append('<button id="'+value+'">'+value+'</button>');
 /*
     $('#audio').append('<audio controls preload="auto" class="player" id="'+value+'"><source src="'+value+'" type="audio/mpeg;" codecs="mp3"></audio>');
-    */
+*/
 });
 
 $('#playlist button').click(function(){
@@ -29,7 +29,10 @@ $('#playlist button').last().addClass('last');
 
 
 $('.player').on('ended', function() {
-
+  var track = $('.active').next('button').attr('id');
+  //.('button').attr('id');
+  console.log(track);
+  $('.player').attr('src',track).trigger('play');
 });
 
 /*
